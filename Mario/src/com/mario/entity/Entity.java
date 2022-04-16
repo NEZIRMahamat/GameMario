@@ -2,19 +2,20 @@ package com.mario.entity;
 
 import java.awt.Image;
 
-import com.mario.game.AppMario;
+import com.mario.modele.ObjetGame;
+import com.mario.view.AppMario;
 
 @SuppressWarnings("unused")
-public abstract class Entity {
+public abstract class Entity implements Movement {
 	
 	protected int x, y;
-	protected int count;
+	protected int count; //compteur de marche de Mario
 	protected int height, width;
 	protected boolean walking;
 	protected boolean rightWalk;
 
 	
-	public Entity(int x, int y, int height, int width) {
+	public Entity(int x, int y, int width, int height ) {
 		this.x = x;
 		this.y = y;
 		this.count = 0;
@@ -25,8 +26,6 @@ public abstract class Entity {
 	}
 	
 	
-	
-	public abstract Image walk(int frequency); 
 
 	public int getX() {
 		return x;
@@ -83,6 +82,61 @@ public abstract class Entity {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	
+	
+	//Contact with things
+	
+	
+	public boolean isContactRight(ObjetGame objectGame){
+		if(this.x + this.width < objectGame.getX() || this.x + this.width > objectGame.getX() + 5 ||
+			       this.y + this.height <= objectGame.getY() || this.y >= objectGame.getY() + objectGame.getHeight()){
+			return false;
+			}
+		else{return true;}
+	}
+		
+
+	public boolean isContactLeft(ObjetGame objectGame) {
+		if(this.x + this.width < objectGame.getX() + objectGame.getWidth() -5 || this.x > objectGame.getX() + objectGame.getWidth() || 
+				this.y +this.height <= objectGame.getY() || this.y >= objectGame.getY() + objectGame.getHeight()) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
+	public boolean isContactBottom(ObjetGame objectGame) {
+		if(this.x + this.width < objectGame.getX() + 5 || this.x > objectGame.getX() + objectGame.getWidth()-5||
+				this.y + this.getHeight() < objectGame.getY() || this.y + this.height > objectGame.getY()+ 5) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public boolean isContactTop(ObjetGame objectGame) {
+		if(this.x + this.width < objectGame.getX() + 5|| this.x > objectGame.getX() + objectGame.getWidth()-5  ||
+				this.getY() < objectGame.getY() + objectGame.getHeight() || this.y > objectGame.getY() + objectGame.getHeight()+5) {
+			return false;
+		}
+		else {
+			return  true;
+		}
+	}
+	
+	
+	public boolean close(ObjetGame objectGame) {
+		if( (this.x > objectGame.getX() - 10 && this.x < objectGame.getX() + objectGame.getWidth() + 10 ) ||
+				(this.x +this.width > objectGame.getX() -10 && this.x + this.width < objectGame.getX() + objectGame.getWidth()+10)){
+			return true;
+			
+		}else {
+			return false;
+		}
+	}
+
+
 
 	
 	
