@@ -125,7 +125,7 @@ public abstract class Entity implements Movement {
 		}
 	}
 	
-	
+	//Mario proche de l'objet
 	public boolean close(ObjetGame objectGame) {
 		if( (this.x > objectGame.getX() - 10 && this.x < objectGame.getX() + objectGame.getWidth() + 10 ) ||
 				(this.x +this.width > objectGame.getX() -10 && this.x + this.width < objectGame.getX() + objectGame.getWidth()+10)){

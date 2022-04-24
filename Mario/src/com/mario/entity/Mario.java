@@ -55,9 +55,9 @@ public class Mario extends Entity {
 		this.countJump++;
 		
 		//saut du mario
-		if(this.countJump <= 35) {
+		if(this.countJump <= 40) {
 			if(this.y > AppMario.scene.controller.getYBackground()) {this.setY(this.y - 4);}
-			else { this.countJump = 36; }
+			else { this.countJump = 41; }
 			
 			if(this.isRightWalk() == true) {
 				image =this.loader.getImageMarioJumpRight();
@@ -67,7 +67,6 @@ public class Mario extends Entity {
 			
 		}
 		//retombée du mario
-		
 		else if(this.y + this.height < AppMario.scene.controller.getYGround()) {
 			this.setY(this.y + 1) ; 
 			if(this.isRightWalk() == true) { image =this.loader.getImageMarioJumpRight(); }
@@ -84,6 +83,7 @@ public class Mario extends Entity {
 
 	}
 	
+	//Marche de Mario
 	public Image walk(int frequency) {
 			Image image;
 			
@@ -107,13 +107,14 @@ public class Mario extends Entity {
 	}
 
 	public void contact(ObjetGame object) {
-		//contact right
+		//Horizontal contact
 		if( (super.isContactRight(object) == true && isRightWalk() == true) ||
 		(super.isContactLeft(object) == true && this.isRightWalk() == false)) {
 			AppMario.scene.controller.setDeltaX(0);
 			this.setWalking(false);
 		}
 		
+		//Contact bottom
 		if((super.isContactBottom(object) == true && this.jump == true)){ //Mr jump on the thing
 			AppMario.scene.controller.setYGround(object.getY());
 		}else if(super.isContactBottom(object) == false){ /// Mr fall on the initial ground
@@ -128,7 +129,7 @@ public class Mario extends Entity {
 			AppMario.scene.controller.setYBackground(object.getY() +object.getHeight());
 			}
 		else if(super.isContactTop(object) == false && this.jump == false) {
-			AppMario.scene.controller.setYGround(0); //initial height in the background of game
+			AppMario.scene.controller.setYBackground(0); //initial height in the background of game
 		}
 	}
 
