@@ -14,10 +14,10 @@ public class Pipe extends ObjetGame{
 		this.loader = new Loader();
 		
 	}
-	
-	public Image getImagePipe() {
-		
+
+	@Override
+	public Image getImageObject() {
+		// TODO Auto-generated method stub
 		return this.loader.getImagePipeRed();
-		
 	}
 }

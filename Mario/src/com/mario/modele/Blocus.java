@@ -15,10 +15,10 @@ public class Blocus extends ObjetGame{
 		
 	}
 	
-	public Image getImageBlocus() {
-		
+	@Override
+	public Image getImageObject() {
+		// TODO Auto-generated method stub
 		return this.loader.getImageBloc();
-		
 	}
 
 }

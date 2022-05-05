@@ -3,6 +3,7 @@ package com.mario.entity;
 import java.awt.Image;
 
 import com.mario.modele.ObjetGame;
+import com.mario.modele.Piece;
 import com.mario.view.AppMario;
 import com.mario.view.Loader;
 
@@ -87,7 +88,7 @@ public class Mario extends Entity {
 	public Image walk(int frequency) {
 			Image image;
 			
-			if(this.walking == false || AppMario.scene.controller.getXPos()<= 0) {
+			if(this.walking == false || AppMario.scene.controller.getXPos()<= 0 || AppMario.scene.controller.getXPos() > 4430) {
 				if(this.rightWalk ==true) { image = loader.getImageMarioStopRight(); }
 				else { image = loader.getImageMarioStopLeft(); }
 			}
@@ -131,6 +132,14 @@ public class Mario extends Entity {
 		else if(super.isContactTop(object) == false && this.jump == false) {
 			AppMario.scene.controller.setYBackground(0); //initial height in the background of game
 		}
+	}
+	
+	public boolean contactPiece(Piece piece) {
+		if(super.isContactLeft(piece) == true || super.isContactRight(piece)==true || super.isContactTop(piece)==true ||
+				super.isContactBottom(piece)==true) {
+			return true;
+		}
+		return false;
 	}
 
 	

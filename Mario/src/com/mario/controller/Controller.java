@@ -26,7 +26,7 @@ public class Controller {
 
 	public void moveBackground() { 
 		
-		if(xPos >= 0) {
+		if(xPos >= 0 && xPos <= 4430) {
 			this.xPos = this.xPos + this.deltaX;
 			this.xBack1 = this.xBack1 - this.deltaX; 
 			this.xBack2 = this.xBack2 - this.deltaX; 

@@ -28,7 +28,16 @@ public class Keyboard implements KeyListener {
 			AppMario.scene.controller.setDeltaX(1);
 			
 		}
-		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {			
+		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {	
+			
+			if(AppMario.scene.controller.getXPos() == 4431) {
+				AppMario.scene.controller.setXPos(4430);
+				AppMario.scene.controller.setXBack1(-50);
+				AppMario.scene.controller.setXBack2(750);
+
+			}
+			
+			
 			AppMario.scene.mario.setWalking(true);
 			AppMario.scene.mario.setRightWalk(false);
 			AppMario.scene.controller.setDeltaX(-1);

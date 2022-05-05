@@ -1,5 +1,9 @@
 package com.mario.modele;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import com.mario.view.AppMario;
 
 public abstract class ObjetGame {
@@ -7,6 +11,7 @@ public abstract class ObjetGame {
 	
 	protected int x, y;
 	protected int width, height;
+	
 	
 	
 	public int getHeight() {
@@ -24,6 +29,8 @@ public abstract class ObjetGame {
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		//this.iconObject = new ImageIcon();
+		
 	}
 	
 	
@@ -52,7 +59,9 @@ public abstract class ObjetGame {
 			this.x = this.x - AppMario.scene.controller.getDeltaX();
 		}
 	}
-	
+
+
+	public abstract Image getImageObject();
 	
 	
 }
